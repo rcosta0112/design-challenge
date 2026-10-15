@@ -1,6 +1,6 @@
 # AI-native Banking — Design Challenge
 
-A candidate design challenge: an AI-native mobile banking journey (intent → understanding → recommendation → adjust → approve → done). The deliverables are a Figma design system, 4–6 screens, a clickable prototype, 1–2 summary slides and an optional component-to-code handoff. Brief, deliverables and links are in `README.md`.
+A candidate design challenge: an AI-native mobile banking journey (intent → understanding → recommendation → adjust → approve → done). The deliverables are a Figma design system, 4–6 screens, a clickable prototype (built in SvelteKit, not Figma), 1–2 summary slides and an optional component-to-code handoff. Brief, deliverables and links are in `README.md`.
 
 Read `doc/current-state.md` before anything else.
 
@@ -17,6 +17,8 @@ Open the one doc the task needs. Don't read `doc/` broadly.
 | Log hours | `doc/time-log.md` |
 | Research, similar products, trust data, Dione precedent | `doc/01-understand/research.md` |
 | Visual audit and direction options | `doc/01-understand/visual-audit.md` (images in `visual-audit/sheets/`) |
+| Colour palettes, contrast, accent options | `doc/01-understand/color-audit.md` |
+| How AI assistant apps work (Claude mobile), flows to borrow | `doc/01-understand/assistant-flows.md` |
 | Proto-persona and story numbers | `doc/01-understand/persona.md` |
 | Problem, design principles, journey and screen tags | `doc/02-define/` |
 | Conversation script, screen specs, prototype interactions | `doc/03-design/` |

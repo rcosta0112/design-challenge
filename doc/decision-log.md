@@ -8,6 +8,64 @@ Newest first. To add an entry, insert it above the first one. Each entry: Contex
 
 ---
 
+## [2026-10-15] [System] — shadcn as the kit, rebuilt locally with shadcn's structure
+
+**Context:** The user picked shadcn from the shortlist (`03-design/ui-kits.md`). The Obra shadcn/ui Community file isn't linked to our Figma file, and the MCP can't add Community libraries.
+
+**Decision:** Build a local kit that follows shadcn's structure: shadcn's semantic token names (`background`, `foreground`, `card`, `primary`, `muted`, `muted-foreground`, `border`, `input`), Geist (shadcn's default font), Lucide icons, and the Card and Input patterns. Our palette fills the values. Two additions: `brand` (butter) and `ai-from`/`ai-to` (the AI gradient). shadcn's own `accent` is a hover tint, so the brand colour got a separate name. System chrome comes from the iOS 18 kit; the iOS 26 kit wouldn't import into this file.
+
+**Alternatives considered:** Duplicate the Obra file and link it (manual, and publishing a library may need a paid plan); use the Simple Design System or Material 3 kits that are already linked (they look further from Klarna/Wise).
+
+**Rationale:** Same names as shadcn's CSS variables, so the SvelteKit prototype (shadcn-svelte) can take the tokens one-to-one. If the Obra file is linked later, the components can be swapped without renaming anything.
+
+**Status:** Done for `ab-00.start`. Brand accent still open; butter is wired as `color/brand` but not used on this screen.
+
+---
+
+## [2026-10-15] [UX] — The AI recommends €375; the user adjusts to €430 and approves that
+
+**Context:** Open question 0: the wireframes approve the skip-December plan (€430), while `persona.md` recommends €375. The wireframes also show two adjust states (skip December; start in December) with no order between them.
+
+**Decision (proposed):** Both numbers stand. The AI recommends €375 (`ab-03`). In the sheet, the user types "What if I start in December?" → €500, tight (`ab-04--tight`) → taps a new fix chip "Start in Oct, skip Dec · €430/mo" → €430 (`ab-04`) → approves €430 (`ab-05`, `ab-06`). Review stays enabled even while tight; the user decides.
+
+**Alternatives considered:** Approve €375 (the adjust step becomes decoration: the user changes nothing); approve €500 (the story ends on a plan the AI flagged as unaffordable); drop the tight state (loses the required state change).
+
+**Rationale:** The adjust step must change the outcome, or the "user steers" principle isn't shown. December is the persona's real worry, so typing about it, hitting the limit and landing on "skip December" by touch shows chat and controls editing the same card, the state change and the AI helping rather than just obeying, in one path.
+
+**Status:** Proposed. Needs the user's OK and one wireframe change (the third chip). Details: `02-define/journey.md`.
+
+---
+
+## [2026-10-15] [Process] — Prototype in SvelteKit, not Figma
+
+**Context:** The brief asks for an "interactive Figma prototype" of the core journey, with key transitions and at least one state change.
+
+**Decision:** The user's call: no Figma prototype. The clickable journey is built in SvelteKit, from the same screens and components. Figma stays the source of truth for the design system and the screens.
+
+**Alternatives considered:** A Figma prototype only (as planned); both, with a minimal Figma prototype as a fallback.
+
+**Rationale:** Real interaction (a live slider, typed chat, the plan updating as you go) shows the AI moments and state changes better than linked frames. It also turns the handoff (15%) into working code rather than a spec.
+
+**Risk:** The deliverables list names a *Figma* prototype. Reviewers may expect a Figma link. Mitigation: say so on the slides and in the submission text, give a hosted link that works on a phone, and keep frame names = route/component names so the Figma-to-code mapping is visible.
+
+**Status:** Decided (user). Fallback still open.
+
+---
+
+## [2026-10-15] [Visual] — Palette: Klarna/Wise pattern, our own accent
+
+**Context:** The user picked Klarna and Wise as the closest look (supersedes the A/B/C choice below, except where noted). Colour audit: `01-understand/color-audit.md`.
+
+**Decision (proposed):** Copy the *pattern*, not the colours: a warm off-white canvas, a near-black ink, and one pale accent used only as a fill with ink text on it. Accent: **butter `#FFE066`**, the only hue no app in the set owns (fallback: aqua). The AI signal from direction A stays: a periwinkle-to-aqua gradient reserved for the AI's voice and estimates.
+
+**Alternatives considered:** Klarna pink or Wise lime (their brands); saturated mid-tones like electric blue or violet (fail with ink text, need white text); apricot (too close to Cleo and Claude).
+
+**Rationale:** The pale-accent pattern gives over 10:1 contrast for text on the accent and works in light and dark mode. An unowned hue avoids reading as a copy, and keeping the AI gradient separate keeps the "AI-native" signal the visual audit called for.
+
+**Status:** Open. The user picks the accent.
+
+---
+
 ## [2026-10-15] [Visual] — Visual direction: three options; A recommended
 
 **Context:** The user wants to avoid the traditional banking style; the feature should signal youth and a future-facing product. Visual audit of 17 apps in `01-understand/visual-audit.md`.

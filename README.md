@@ -9,7 +9,7 @@ Full brief and our interpretation: [`doc/brief.md`](doc/brief.md).
 | Deliverable | Status | Link |
 |---|---|---|
 | Figma file: 4–6 polished mobile screens + design system | Reference page done | [Design Challenge](https://www.figma.com/design/VM1bse2WYuRKqF8Umvq02C/Design-Challenge) |
-| Interactive Figma prototype of the primary journey | Not started | — |
+| Interactive prototype of the primary journey (SvelteKit, not Figma; see decision log) | Not started | — |
 | 1–2 summary slides (journey, rationale, AI tools, links) | Not started | — |
 | Optional: component-to-code mapping / Code Connect | Not started | — |
 | Submission text including hours used | Not started | see `doc/time-log.md` |

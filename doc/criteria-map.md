@@ -21,7 +21,7 @@ Status: ☐ not started · ◐ in progress · ☑ done
 | Small, organised design system | Pages: Foundations, Components; see `04-system/` | | ☐ |
 | Auto Layout, components/variants, styles or variables | Every component uses Auto Layout; tokens are variables | | ☐ |
 | Screens built from the system | No detached instances on the Screens page | | ☐ |
-| Clickable prototype of one complete core journey | `ab-01` → `ab-06`; see `03-design/prototype-spec.md` | | ☐ |
+| Clickable prototype of one complete core journey | SvelteKit app, `ab-00` → `ab-06` (not a Figma prototype, see decision log); `03-design/prototype-spec.md` | | ☐ |
 | Includes the AI interaction, a meaningful decision and a confirmation | Chat → choose and adjust the plan → approve → done | | ☐ |
 | Key transitions and at least one state change | Plan card draft → adjusting → approved; fit meter changes colour with the slider | | ☐ |
 | Show the AI tools used, what they generated, what was changed and how it was judged | `ai-log.md` → AI slide | | ☐ |
@@ -38,6 +38,6 @@ Status: ☐ not started · ◐ in progress · ☑ done
 | Visual design quality | 20% | The 6 screens, data visuals, consistency |
 | AI-assisted design & critical judgement | 25% | `ai-log.md`: rejected and edited output, before/after images |
 | Figma & design system quality | 15% | Variables, variants, Auto Layout, page structure, naming |
-| Prototype & implementation handoff | 15% | Transitions, state change, PlanCard handoff |
+| Prototype & implementation handoff | 15% | SvelteKit prototype: transitions, state change; PlanCard in code |
 
 The reviewers also say they'll prioritise **clear thinking, elegant interaction design, consistency, user control and iterating effectively with AI.**
