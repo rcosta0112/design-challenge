@@ -8,6 +8,48 @@ Newest first. To add an entry, insert it above the first one. Each entry: Contex
 
 ---
 
+## [2026-10-15] [System] — Prototype scaffold: SvelteKit 2 + shadcn-svelte in `code/`
+
+**Context:** Start the prototype. The user asked for SvelteKit + shadcn with animated transitions, taking from Eigodojo only what fits this scope.
+
+**Decision:** One SvelteKit app at `code/` (answers open question 2, the location part); `adapter-static`; Mint Dark tokens as shadcn CSS variables in `layout.css`. Transitions: View Transitions API for `/` ⇄ `/plan` (push/pop by route depth), `svelte/transition` for sheets and stream-in, `Tween` for count-ups. Sheets use shallow routing so Back closes them. A custom `Sheet`, not shadcn's, because shadcn's portals to `<body>` and would escape the desktop phone frame.
+
+**Taken from Eigodojo:** the reduced-motion signal and `ms()` duration helper, runes mode, a fixed dev port, the `data-screen` tag convention. **Not taken:** the monorepo/workspaces, the shared UI package, daisyUI, sound, splash, PWA, Vitest/Playwright: too much for one 6-screen prototype.
+
+**Alternatives considered:** SvelteKit 3 (needs Node 22.17; this machine has 22.13, so pinned 2.x rather than change the system Node). shadcn's Drawer/Sheet (rejected for the reason above). A store per screen (rejected: the spec asks for one plan object).
+
+**Rationale:** Smallest setup that covers the spec's routes, state changes and transitions; static output hosts anywhere for free.
+
+**Status:** Scaffold built, check/lint/build pass. Hosting: Vercel (user sets it up; adapter-static works there as is).
+
+## [2026-10-15] [System] — Components page on the utility template; FitMeter merged, Sheet as a pattern
+
+**Context:** The user asked for the component library to follow their utility template (Eigodojo `268:546`), without changing component design, and for it to be ready for development handoff.
+
+**Decision:**
+- 15 boards in 4 rows (Foundations, Actions & inputs, Conversation & content, Navigation & surfaces). Components show on dark specimen panels in `Mint Dark`.
+- Added what handoff was missing: Button `state=disabled`, ToggleRow `state=off`, AmountDisplay, and Dev Mode descriptions on all components.
+- FitMeter is not built; tight status = warning Banner + AmountDisplay `tight` + Slider `tight`.
+- Sheet stays a documented layout pattern rather than a component.
+
+**Alternatives considered:** Showing components straight on the light board (rejected: Mint Dark text would vanish). A Sheet component with a content slot (rejected for now: the content varies, and slots would add complexity for little gain at this scope).
+
+**Rationale:** Developers get one page showing tokens, every variant and the intended theme, with the behaviour in each description.
+
+**Status:** Done.
+
+## [2026-10-15] [Visual] — All screens on a dark sky (`sky=0011`)
+
+**Context:** While building the remaining screens, the user said the darker background images work better.
+
+**Decision:** `ab-01` to `ab-06` use `sky=0011`, the near-black sky with a faint warm floor; this includes the already-built `ab-02` and `ab-04`. The Home variations (`ab-00.start--dark-*`) stay as options.
+
+**Alternatives considered:** `sky=0001`, which is equally dark with a cooler teal floor; it's a one-click swap on the `Background` instance. Keeping `0031` on the thread screens was rejected because its warm patch sits behind the cards.
+
+**Rationale:** Thread screens carry the most text and numbers, so a calm, dark backdrop keeps the attention on the content and the contrast steady.
+
+**Status:** Built. The user can still swap to `0001`.
+
 ## [2026-10-15] [Visual] — Dark direction picked: "Mint Dark" over sky images
 
 **Context:** The user reviewed two dark-background versions of `ab-00` and picked the slate one. They added 14 sky images to the library and asked for more variations, a palette that fixes the review's issues (`color-audit.md`, "Review: two dark-background variations"), and hi-fi `ab-02` and `ab-04`.

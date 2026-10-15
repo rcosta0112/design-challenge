@@ -24,6 +24,35 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-15] Claude Code — Prototype scaffold (SvelteKit + shadcn-svelte)
+
+- **Task:** Scaffold the prototype in SvelteKit + shadcn with animated transitions, using Eigodojo as a reference without copying it wholesale.
+- **Generated:** `code/` app: Mint Dark tokens as CSS variables, phone frame, direction-aware route transitions, `Sheet` with shallow routing, `AnimatedNumber`, reduced-motion helper, the `plan` object with the journey maths, stub routes `/` and `/plan`.
+- **Changed:** Pinned SvelteKit 2 (the CLI's default 3.x needs a newer Node); wrote `components.json` by hand (the shadcn-svelte init needs an interactive preset); fixed a regex mangled by a shell heredoc. User review: *pending*.
+- **Judged by:** `npm run check`, `lint` and `build` pass; both routes render; plan maths checked against `journey.md` (€375 × 8, €430 × 7 skip Dec, €500 × 6 start Dec = tight).
+- **Verdict:** pending
+
+### [2026-10-15] Claude Code (Figma MCP) — Component library on the utility template
+
+- **Task:** Reorganise the Components page to the user's template, add missing components, and make it ready for handoff.
+- **Generated:**
+  - 15 boards (`ab-components-01.colour` … `15.backgrounds`) with Foundations boards: a colour table across 3 modes, type specimens, spacing and radius.
+  - Button disabled variants, ToggleRow off, AmountDisplay, and descriptions on 39 components.
+  - The amount text on the `ab-04` screens is replaced with AmountDisplay instances.
+- **Changed:** Agent self-correction: variant sets were clipped at a fixed width; they now hug.
+- **Judged by:** Screenshots of the boards and `ab-04`, and an audit for loose text on screens.
+- **Verdict:** pending
+- **Assets:** Figma page Components `21:372`
+
+### [2026-10-15] Claude Code (Figma MCP) — Remaining hi-fi screens `ab-01`, `ab-03`, `ab-05`, `ab-06`
+
+- **Task:** Build the rest of the screens with the background images (the user prefers the darker ones).
+- **Generated:** Components OptionCard, PlanCard (draft/approved), ProgressBar, Badge and icon/scan-face; a Button Icon boolean; a SheetHeader "Show action" boolean; a multi-line Composer `filled`; text style `body/lg`. Frames `ab-01.intent`, `ab-03.plan`, `ab-05.review` and `ab-06.done`. The Screens row at y=2200 is now ordered `ab-01` → `ab-06` and every frame uses `sky=0011`.
+- **Changed:** User review: *pending*.
+- **Judged by:** One screenshot per screen (no overflow, no clipping, script copy matches `conversation-script.md`).
+- **Verdict:** pending
+- **Assets:** Figma page Screens `21:555`
+
 ### [2026-10-15] Claude Code (Figma MCP) — Mint Dark mode, thread components, hi-fi `ab-02` and `ab-04`
 
 - **Task:** Use the user's sky images for more `ab-00` variations, adjust the palette to fix the review issues, and build hi-fi `ab-02` and `ab-04`.

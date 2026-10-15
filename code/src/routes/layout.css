@@ -1,0 +1,177 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import '@fontsource-variable/geist';
+
+/* Tokens mirror the Figma collection `shadcn`, mode `Mint Dark`
+   (doc/04-system/tokens.md). Figma is the source of truth: change a value
+   there first, then here. The app is dark only, so there is one :root set
+   and no light/dark switch. */
+:root {
+	--background: #0e1512;
+	--foreground: #f2f5f3;
+	--card: rgb(10 16 14 / 0.62);
+	--card-foreground: #f2f5f3;
+	--popover: #17201d;
+	--popover-foreground: #f2f5f3;
+	--primary: #0fffb3;
+	--primary-foreground: #0e1512;
+	--secondary: rgb(255 255 255 / 0.12);
+	--secondary-foreground: #f2f5f3;
+	--muted: rgb(255 255 255 / 0.12);
+	--muted-foreground: #a7b4ae;
+	--accent: rgb(255 255 255 / 0.12);
+	--accent-foreground: #f2f5f3;
+	--destructive: #ff6b6b;
+	--border: rgb(255 255 255 / 0.16);
+	--input: rgb(255 255 255 / 0.16);
+	--ring: #0fffb3;
+
+	/* Project roles beyond shadcn's set */
+	--brand: #0fffb3;
+	--brand-foreground: #0e1512;
+	--ai-from: #0fffb3;
+	--ai-to: #7dd3fc;
+	--composer: #f2f5f3;
+	--composer-foreground: #0e1512;
+	--composer-muted: #dde4e0;
+	--composer-muted-foreground: #525e59;
+	--bar: rgb(14 21 18 / 0.72);
+	--sheet: #17201d;
+	--overlay: rgb(0 0 0 / 0.55);
+	--warning: rgb(255 181 71 / 0.16);
+	--warning-foreground: #ffc56b;
+	--chart-1: #e3e9e6;
+	--chart-2: #7c8883;
+
+	color-scheme: dark;
+}
+
+@theme inline {
+	--font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-brand: var(--brand);
+	--color-brand-foreground: var(--brand-foreground);
+	--color-ai-from: var(--ai-from);
+	--color-ai-to: var(--ai-to);
+	--color-composer: var(--composer);
+	--color-composer-foreground: var(--composer-foreground);
+	--color-composer-muted: var(--composer-muted);
+	--color-composer-muted-foreground: var(--composer-muted-foreground);
+	--color-bar: var(--bar);
+	--color-sheet: var(--sheet);
+	--color-overlay: var(--overlay);
+	--color-warning: var(--warning);
+	--color-warning-foreground: var(--warning-foreground);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+
+	/* radius/md, lg, xl, full */
+	--radius-md: 12px;
+	--radius-lg: 16px;
+	--radius-xl: 24px;
+
+	/* Type styles (tokens.md › Typography) as text-* utilities */
+	--text-display-amount: 36px;
+	--text-display-amount--line-height: 40px;
+	--text-display-amount--letter-spacing: -0.03em;
+	--text-heading-xl: 28px;
+	--text-heading-xl--line-height: 34px;
+	--text-heading-xl--letter-spacing: -0.02em;
+	--text-heading-sm: 18px;
+	--text-heading-sm--line-height: 24px;
+	--text-heading-sm--letter-spacing: -0.01em;
+	--text-body-md: 16px;
+	--text-body-md--line-height: 24px;
+	--text-body-sm: 14px;
+	--text-body-sm--line-height: 20px;
+	--text-label-xs: 11px;
+	--text-label-xs--line-height: 14px;
+	--text-label-xs--letter-spacing: 0.01em;
+
+	/* Motion: one ease for everything that enters, one for exits */
+	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+	--ease-in: cubic-bezier(0.64, 0, 0.78, 0);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	html,
+	body {
+		@apply h-full;
+	}
+	body {
+		@apply bg-black font-sans text-foreground antialiased;
+	}
+}
+
+/* Route transitions (see +layout.svelte › onNavigate). Only the phone
+   screen is named, so the desktop frame around it stays still. */
+.screen {
+	view-transition-name: screen;
+}
+::view-transition-old(screen),
+::view-transition-new(screen) {
+	animation-duration: 360ms;
+	animation-timing-function: var(--ease-out);
+}
+:root[data-nav='forward']::view-transition-old(screen) {
+	animation-name: screen-out-left;
+}
+:root[data-nav='forward']::view-transition-new(screen) {
+	animation-name: screen-in-right;
+}
+:root[data-nav='back']::view-transition-old(screen) {
+	animation-name: screen-out-right;
+}
+:root[data-nav='back']::view-transition-new(screen) {
+	animation-name: screen-in-left;
+}
+@keyframes screen-in-right {
+	from {
+		transform: translateX(100%);
+	}
+}
+@keyframes screen-out-left {
+	to {
+		transform: translateX(-30%);
+		opacity: 0.4;
+	}
+}
+@keyframes screen-in-left {
+	from {
+		transform: translateX(-30%);
+		opacity: 0.4;
+	}
+}
+@keyframes screen-out-right {
+	to {
+		transform: translateX(100%);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+}
