@@ -31,5 +31,16 @@ export const DURATION = {
 
 export const EASE = { out: cubicOut, in: cubicIn };
 
+/** Pacing between scripted turns. Not shortened by reduced motion: that
+ *  removes movement, not the time the user needs to read each step. */
 export const wait = (duration: number) =>
-	new Promise<void>((resolve) => setTimeout(resolve, ms(duration)));
+	new Promise<void>((resolve) => setTimeout(resolve, duration));
+
+/** Types `text` into `set` over about `duration` ms, word by word (ab-01). */
+export async function typeInto(text: string, set: (value: string) => void, duration = 1500) {
+	const words = text.split(' ');
+	for (let i = 1; i <= words.length; i++) {
+		set(words.slice(0, i).join(' '));
+		await wait(duration / words.length);
+	}
+}

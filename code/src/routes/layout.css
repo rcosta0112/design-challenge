@@ -2,51 +2,81 @@
 @import 'tw-animate-css';
 @import '@fontsource-variable/geist';
 
-/* Tokens mirror the Figma collection `shadcn`, mode `Mint Dark`
-   (doc/04-system/tokens.md). Figma is the source of truth: change a value
-   there first, then here. The app is dark only, so there is one :root set
-   and no light/dark switch. */
+/* Dark only: <html class="dark"> is fixed, so shadcn's dark: styles always apply,
+   whatever the viewer's OS setting. */
+@custom-variant dark (&:is(.dark *));
+
+/* shadcn-svelte's registry styles use data-checked / data-horizontal, but
+   bits-ui (2.19) sets data-state / data-orientation. Map them so the
+   generated components work as shipped. */
+@custom-variant data-checked (&:is([data-checked], [data-state='checked']));
+@custom-variant data-unchecked (&:is([data-unchecked], [data-state='unchecked']));
+@custom-variant data-horizontal (&:is([data-horizontal], [data-orientation='horizontal']));
+@custom-variant data-vertical (&:is([data-vertical], [data-orientation='vertical']));
+
+/* Tokens mirror the Figma collection `shadcn`, mode `Dark`
+   (doc/04-system/tokens.md); each variable's Dev Mode code syntax is the
+   CSS name below. Figma is the source of truth: change a value there first,
+   then here. var() references mirror Figma aliases. The app is dark only, so
+   there is one :root set and no light/dark switch. */
 :root {
 	--background: #0e1512;
 	--foreground: #f2f5f3;
 	--card: rgb(10 16 14 / 0.62);
-	--card-foreground: #f2f5f3;
+	--card-foreground: var(--foreground);
 	--popover: #17201d;
-	--popover-foreground: #f2f5f3;
+	--popover-foreground: var(--foreground);
 	--primary: #0fffb3;
 	--primary-foreground: #0e1512;
-	--secondary: rgb(255 255 255 / 0.12);
-	--secondary-foreground: #f2f5f3;
+	--secondary: var(--muted);
+	--secondary-foreground: var(--foreground);
 	--muted: rgb(255 255 255 / 0.12);
 	--muted-foreground: #a7b4ae;
-	--accent: rgb(255 255 255 / 0.12);
-	--accent-foreground: #f2f5f3;
+	--accent: var(--muted);
+	--accent-foreground: var(--foreground);
 	--destructive: #ff6b6b;
 	--border: rgb(255 255 255 / 0.16);
-	--input: rgb(255 255 255 / 0.16);
-	--ring: #0fffb3;
+	--input: var(--border);
+	--ring: var(--primary);
+	--radius: 12px;
 
-	/* Project roles beyond shadcn's set */
-	--brand: #0fffb3;
-	--brand-foreground: #0e1512;
-	--ai-from: #0fffb3;
+	/* Project roles beyond shadcn's set, in shadcn's name / name-foreground pattern */
+	--success: rgb(15 255 179 / 0.16);
+	--success-foreground: var(--primary);
+	--warning: rgb(255 181 71 / 0.16);
+	--warning-foreground: #ffc56b;
+	--brand: var(--primary);
+	--brand-foreground: var(--primary-foreground);
+	--ai-from: var(--primary);
 	--ai-to: #7dd3fc;
 	--composer: #f2f5f3;
 	--composer-foreground: #0e1512;
 	--composer-muted: #dde4e0;
 	--composer-muted-foreground: #525e59;
 	--bar: rgb(14 21 18 / 0.72);
-	--sheet: #17201d;
 	--overlay: rgb(0 0 0 / 0.55);
-	--warning: rgb(255 181 71 / 0.16);
-	--warning-foreground: #ffc56b;
 	--chart-1: #e3e9e6;
 	--chart-2: #7c8883;
+
+	/* Figma blur/xl. Figma's background-blur value is twice the CSS blur
+	   radius, so components use backdrop-blur-[calc(var(--blur-xl)/2)],
+	   exactly what Figma's code output gives (tokens.md › Spacing, radius and blur). */
+	--blur-xl: 24px;
 
 	color-scheme: dark;
 }
 
 @theme inline {
+	/* Lock-down: only our tokens generate colour and radius utilities.
+	   Tailwind's default palette and radii are removed; white/black stay for
+	   the page behind the phone frame and shadcn's slider thumb. Shadows are
+	   not in the system but stay available: Tailwind's shadow-* scales are
+	   kept for the rare exception (tokens.md › Tailwind setup). */
+	--color-*: initial;
+	--radius-*: initial;
+	--color-white: #fff;
+	--color-black: #000;
+
 	--font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
 
 	--color-background: var(--background);
@@ -76,35 +106,58 @@
 	--color-composer-muted: var(--composer-muted);
 	--color-composer-muted-foreground: var(--composer-muted-foreground);
 	--color-bar: var(--bar);
-	--color-sheet: var(--sheet);
 	--color-overlay: var(--overlay);
+	--color-success: var(--success);
+	--color-success-foreground: var(--success-foreground);
 	--color-warning: var(--warning);
 	--color-warning-foreground: var(--warning-foreground);
 	--color-chart-1: var(--chart-1);
 	--color-chart-2: var(--chart-2);
 
-	/* radius/md, lg, xl, full */
-	--radius-md: 12px;
-	--radius-lg: 16px;
-	--radius-xl: 24px;
+	/* Radius: shadcn's derivation from --radius (12), one step per Figma
+	   radius/* variable (sm 8, lg 12, xl 16, 2xl 20, 3xl 24). md is shadcn's,
+	   used by its components only. rounded-full needs no token. */
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--radius-2xl: calc(var(--radius) + 8px);
+	--radius-3xl: calc(var(--radius) + 12px);
 
-	/* Type styles (tokens.md › Typography) as text-* utilities */
-	--text-display-amount: 36px;
-	--text-display-amount--line-height: 40px;
-	--text-display-amount--letter-spacing: -0.03em;
+	/* Type styles (tokens.md › Typography) as text-* utilities. Each one
+	   carries its Figma weight, so text-label-sm alone = the label/sm style. */
+	--text-display-md: 36px;
+	--text-display-md--line-height: 40px;
+	--text-display-md--letter-spacing: -0.03em;
+	--text-display-md--font-weight: 600;
 	--text-heading-xl: 28px;
 	--text-heading-xl--line-height: 34px;
 	--text-heading-xl--letter-spacing: -0.02em;
+	--text-heading-xl--font-weight: 500;
 	--text-heading-sm: 18px;
 	--text-heading-sm--line-height: 24px;
 	--text-heading-sm--letter-spacing: -0.01em;
+	--text-heading-sm--font-weight: 600;
+	--text-body-lg: 20px;
+	--text-body-lg--line-height: 28px;
+	--text-body-lg--letter-spacing: -0.01em;
+	--text-body-lg--font-weight: 400;
 	--text-body-md: 16px;
 	--text-body-md--line-height: 24px;
+	--text-body-md--font-weight: 400;
 	--text-body-sm: 14px;
 	--text-body-sm--line-height: 20px;
+	--text-body-sm--font-weight: 400;
+	--text-label-md: 16px;
+	--text-label-md--line-height: 24px;
+	--text-label-md--font-weight: 500;
+	--text-label-sm: 14px;
+	--text-label-sm--line-height: 20px;
+	--text-label-sm--font-weight: 500;
 	--text-label-xs: 11px;
 	--text-label-xs--line-height: 14px;
 	--text-label-xs--letter-spacing: 0.01em;
+	--text-label-xs--font-weight: 500;
 
 	/* Motion: one ease for everything that enters, one for exits */
 	--ease-out: cubic-bezier(0.22, 1, 0.36, 1);
@@ -168,7 +221,33 @@
 		transform: translateX(100%);
 	}
 }
+/* Cross-route morph: the typed intent leaves the composer on Home and lands
+   as the first bubble of the thread (prototype-spec.md › ab-01 → ab-02). */
+.vt-intent {
+	view-transition-name: intent;
+}
+::view-transition-group(intent) {
+	animation-duration: 420ms;
+	animation-timing-function: var(--ease-out);
+}
+
+/* Charts draw in from the left (CashflowBar, ProjectionChart, ProgressBar). */
+@keyframes grow-x {
+	from {
+		clip-path: inset(0 100% 0 0);
+	}
+	to {
+		clip-path: inset(0 0 0 0);
+	}
+}
+.animate-grow-x {
+	animation: grow-x 700ms var(--ease-out) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
+	.animate-grow-x {
+		animation: none;
+	}
 	::view-transition-group(*),
 	::view-transition-old(*),
 	::view-transition-new(*) {

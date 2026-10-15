@@ -1,6 +1,6 @@
 # Problem and How Might We
 
-**Status:** Done for phase 2 (2026-10-15). Based on `brief.md`, `01-understand/research.md` and the wireframes (Figma section `17:462`).
+**Status:** Done for phase 2 (2026-10-15). Based on `brief.md`, `01-understand/research.md` and the wireframes (Figma page Wireframes `12:2`, boards `ab-wireframes-01…08`).
 
 ## Problem statement
 

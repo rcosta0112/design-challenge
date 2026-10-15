@@ -2,7 +2,7 @@
 
 **Status:** Specced from the wireframes (2026-10-15). Visual design in phase 3–5. **Phase:** 3–5.
 
-One section per screen, headed by its tag. Frame: 402 × 874 (iPhone 16 Pro). Copy for every screen is in `conversation-script.md`; this file says what each screen is for, what it's built from and which states it has. Wireframes: Figma section `17:462`, built from the local `wf-kit`.
+One section per screen, headed by its tag. Frame: 402 × 874 (iPhone 16 Pro). Copy for every screen is in `conversation-script.md`; this file says what each screen is for, what it's built from and which states it has. Wireframes: Figma page Wireframes `12:2`, one board per screen (`ab-wireframes-01…08`), built from the local `wf-kit` (board `ab-wireframes-09.wf-kit`).
 
 Component names are the library names from `04-system/components.md`; the wireframe name follows in brackets where it differs.
 

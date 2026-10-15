@@ -1,6 +1,6 @@
 # Journey and Screen List
 
-**Status:** Done for phase 2 (2026-10-15), matched to the wireframes (Figma section `17:462`). Two proposed wireframe changes are marked **(proposed)**.
+**Status:** Done for phase 2 (2026-10-15), matched to the wireframes (Figma page Wireframes `12:2`, boards `ab-wireframes-01…08`). Two proposed wireframe changes are marked **(proposed)**.
 
 ## Screen tags
 

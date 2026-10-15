@@ -11,9 +11,9 @@
 	let { tag, sky = '0011', children }: { tag: string; sky?: string; children: Snippet } = $props();
 </script>
 
-<main class="screen absolute inset-0 flex flex-col overflow-hidden" data-screen={tag}>
+<main class="screen absolute inset-0 flex flex-col overflow-hidden bg-background" data-screen={tag}>
 	<Sky id={sky} />
-	<div class="relative flex min-h-0 flex-1 flex-col">
+	<div class="relative flex min-h-0 flex-1 flex-col pt-(--safe-top)">
 		{@render children()}
 	</div>
 </main>

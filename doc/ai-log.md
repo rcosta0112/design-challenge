@@ -24,6 +24,61 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-15] Claude Code (Figma MCP) — Wireframe page tidy-up
+
+- **Task:** Put each wireframe on its own board, like the other utility pages.
+- **Generated:** 10 boards on the Wireframes page in the Reference-page template (`ab-wireframes-00.overview`, `-01…08` with screen + annotation, `-09.wf-kit`); the old section and loose title/label texts removed. Screen frame names (tags) unchanged.
+- **Changed:** —, *waiting for the user's review*.
+- **Judged by:** Board padding, fill, radius and header type copied from `ab-reference-01`; screenshot of one board checked.
+- **Verdict:** pending
+- **Assets:** —
+
+### [2026-10-15] Claude Code (Figma MCP) — Figma ↔ prototype reconciliation
+
+- **Task:** Check the shadcn-aligned Figma file against the prototype and fix inconsistencies; Figma is the source of truth, flag where that breaks.
+- **Generated:** A comparison of the variables used on all 8 screens, per-component token bindings and icon strokes against `layout.css` and the Svelte components; code fixes (sheet radius, glass blur, tab icon colour, check stroke, label styles); Figma fixes (Pay icon strokes, 3 stale descriptions).
+- **Changed:** Nothing rejected. Two candidates were not changed: the composer icon stroke (flagged to the user instead of copying a likely Figma mistake), and the font weight difference (computed weight is correct; rendering only).
+- **Judged by:** Variable values equal to the CSS values; screenshot walk of the full journey compared with Figma frames; Figma TabBar screenshot after the fix.
+- **Verdict:** pending
+
+### [2026-10-15] Claude Code — Sky render to a ping-pong mp4
+
+- **Task:** Encode the 196-frame Nishita sky EXR render (`resources/render/`) as a ping-pong loop at 1 source frame per second that doesn't look choppy.
+- **Generated:** Four options (crossfade blend, motion interpolation, AI interpolation, re-rendering more frames); the user picked crossfade. Output: `resources/nishita-sky-pingpong.mp4` (390 s, 30 fps, H.264, 24 MB), forward then reverse with no repeated end frames, so it loops cleanly.
+- **Changed:** The first test converted the linear EXRs to sRGB in ffmpeg and came out washed-out grey next to `code/static/sky/0011.webp`. Rejected. The user said the frames were graded with AgX High Contrast, so the agent applied that view transform through headless Blender 5.2 (16-bit PNGs) before blending.
+- **Judged by:** Compared frame 11 with the existing webp, both side by side and by mean RGB at three heights (within 2–6/255). Checked still frames from the final video for ghosting and banding. Motion smoothness is still for the user to judge in playback.
+- **Verdict:** ✏️
+- **Assets:** —
+
+### [2026-10-15] Claude Code (Figma MCP) — Prototype screens `ab-00` → `ab-06` in SvelteKit
+
+- **Task:** Build the prototype's screens from the hi-fi Figma frames, with animated transitions.
+- **Generated:** ~25 Svelte components named after the Figma library (Composer, ChatBubble, PlanCard, AmountSlider, ProjectionChart, …), the scripted thread (`thread.svelte.ts`), the plan model with fix chips and change notes, the Face ID prompt, the Home → thread morph. Assets from Figma: sky `0011` (WebP), AI orb, status-bar glyphs; icons from Lucide (same set as Figma).
+- **Changed:** Fixed in the loop after screenshot checks: the Slider and Switch didn't render (shadcn-svelte styles expect `data-checked`/`data-horizontal`, bits-ui sets `data-state`/`data-orientation`; mapped in CSS); the "What if…" bubble pushed the chart under the footer after a fix (now cleared); reduced motion had also removed the pacing (now only movement). Calls beyond the spec: decision-log 2026-10-15 "Prototype: calls made beyond the screen specs". User review: *pending*.
+- **Judged by:** A scripted Playwright walk through the whole journey (13 screenshots, desktop frame and 390 px phone with reduced motion), compared side by side with the Figma frames; zero console errors; `check`, `lint`, `build` pass.
+- **Verdict:** pending
+
+### [2026-10-15] Claude Code — Tailwind fit check and lock-down
+
+- **Task:** Assess how well the tokens work with Tailwind 4, then fix the gaps.
+- **Generated:** A 5-point assessment (`04-system/token-review.md` › Fit with Tailwind 4). Fixes:
+  - Weights built into the `text-*` utilities; 30 class strings rewritten by a script.
+  - Default palette and radii reset in `@theme inline` (shadows were reset too, then restored: the user wants them available as exceptions).
+  - `space/10`, `radius/sm` and `radius/2xl` added and bound in Figma; the chat bubble moved off hard-coded corners.
+- **Changed:** Kept gap 5 (Dev Mode shows `var()`, not classes) as designed. Left device insets (34, 42) unbound. Accepted the one visual change: the bubble tail goes from 6 to 8 px.
+- **Judged by:** `svelte-check` (0 errors) and the build. The compiled CSS was checked for removed palette and shadow variables, a working focus ring and `border-transparent`, and weight in `text-label-sm`. A Figma screenshot of the bubble was checked too.
+- **Verdict:** ✏️ Edited.
+- **Assets:** `04-system/tokens.md` › Tailwind setup
+
+### [2026-10-15] Claude Code — Token system review against industry practice
+
+- **Task:** Check the token system's naming and organisation against industry standards.
+- **Generated:** An audit of the Figma variables (read through the Plugin API), the text styles, component bindings and `layout.css`. It lists 17 findings, ranked: one flat multi-purpose collection, no primitive tier, modes that mix brand with colour scheme, Figma/code drift, component-named tokens, radius names that collide with Tailwind, and more. See `04-system/token-review.md`.
+- **Changed:** The user dropped the Light/Mint modes (only Mint Dark). Taking shadcn into account revised four findings: kept `composer-*` instead of `inverse-*`, replaced the Tailwind-scale radius rename with shadcn's `--radius` base, and dropped the primitives tier and the collection split. Applied in Figma and code on the user's "do it".
+- **Judged by:** Before/after screenshots of `ab-03.plan` and `ab-04.adjust--tight` plus the colour and spacing boards; `svelte-check` (0 errors) and the production build; the compiled CSS checked for radius values (`rounded-3xl` = 24, `rounded-xl` = 16).
+- **Verdict:** ✏️ Edited, then applied.
+- **Assets:** `04-system/token-review.md`; Figma page `Archive` (`48:1090`)
+
 ### [2026-10-15] Claude Code — Prototype scaffold (SvelteKit + shadcn-svelte)
 
 - **Task:** Scaffold the prototype in SvelteKit + shadcn with animated transitions, using Eigodojo as a reference without copying it wholesale.
@@ -31,6 +86,15 @@ Newest first.
 - **Changed:** Pinned SvelteKit 2 (the CLI's default 3.x needs a newer Node); wrote `components.json` by hand (the shadcn-svelte init needs an interactive preset); fixed a regex mangled by a shell heredoc. User review: *pending*.
 - **Judged by:** `npm run check`, `lint` and `build` pass; both routes render; plan maths checked against `journey.md` (€375 × 8, €430 × 7 skip Dec, €500 × 6 start Dec = tight).
 - **Verdict:** pending
+
+### [2026-10-15] Claude Code (Figma MCP) — Dark theme for the library scaffolding
+
+- **Task:** Make the Components page dark to match the app, without touching the components.
+- **Generated:** A colour swap on the scaffolding only (page background, boards, labels, foundation specimens): 229 fills changed; nodes inside components and instances were skipped.
+- **Changed:** —
+- **Judged by:** Screenshots of the cards, spacing and backgrounds boards.
+- **Verdict:** pending
+- **Assets:** Figma page Components `21:372`
 
 ### [2026-10-15] Claude Code (Figma MCP) — Component library on the utility template
 

@@ -4,6 +4,7 @@
 -->
 <script lang="ts">
 	import { untrack } from 'svelte';
+	import type { ClassValue } from 'svelte/elements';
 	import { Tween } from 'svelte/motion';
 	import { DURATION, EASE, ms } from '$lib/motion.svelte';
 
@@ -11,7 +12,7 @@
 		value,
 		format = (n: number) => String(Math.round(n)),
 		class: className = ''
-	}: { value: number; format?: (n: number) => string; class?: string } = $props();
+	}: { value: number; format?: (n: number) => string; class?: ClassValue } = $props();
 
 	// Starts at the real value (no count from 0 on first paint), then tweens on change.
 	const tween = new Tween(
@@ -23,5 +24,5 @@
 	});
 </script>
 
-<span class="tabular-nums {className}" aria-hidden="true">{format(tween.current)}</span>
+<span class={['tabular-nums', className]} aria-hidden="true">{format(tween.current)}</span>
 <span class="sr-only">{format(value)}</span>
