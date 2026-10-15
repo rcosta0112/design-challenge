@@ -8,6 +8,18 @@ Newest first. To add an entry, insert it above the first one. Each entry: Contex
 
 ---
 
+## [2026-10-15] [System] — Type styles registered with tailwind-merge (Review plan contrast)
+
+**Context:** The user asked to check the Review plan button's contrast. It rendered near-white `#F2F5F3` on mint `#0FFFB3`: 1.20:1. Cause: tailwind-merge didn't know our type styles, read `text-body-md` as a text colour, and dropped `text-primary-foreground`. The same bug let the base `text-sm` win over the pill's size, so pill buttons were 14/20 instead of Figma's `label/md` 16/24.
+
+**Decision:** Register the type styles (`display-md` … `label-xs`) as tailwind-merge font sizes in `utils.ts` (`twMergeConfig`), used by `cn()` and by Button's `tv()`. Pill buttons use `text-label-md`, the Figma button style by name.
+
+**Alternatives considered:** Forcing the colour with `!text-primary-foreground` (rejected: patches one symptom, leaves the merge wrong everywhere).
+
+**Rationale:** Any component combining a type style with a text colour was exposed; this fixes the class, not the instance.
+
+**Status:** Review plan now 14.08:1 (dark on mint), as designed. Computed styles on Home and `/plan` compared before/after: only Adjust and Review plan changed (size 14→16, and Review plan's colour). No text on a solid background is below 4.5:1. `check`, `lint`, `build` pass. Sheets (`ab-04`, `ab-05`) not re-audited.
+
 ## [2026-10-15] [UX] — Home greeting types itself in
 
 **Context:** The user asked for a typewriter effect on "Hi, Alex. What can I help you with today?", with line breaks that don't change as words complete. Eigodojo has a script for it, judged too much here.

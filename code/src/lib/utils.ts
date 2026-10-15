@@ -1,5 +1,29 @@
 import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { extendTailwindMerge } from 'tailwind-merge';
+
+/** The type styles in layout.css (`--text-*`). Without them tailwind-merge
+ *  reads `text-body-md` as a text colour and drops a real colour class next
+ *  to it (it turned the Review plan label white on mint, 1.2:1). Shared with
+ *  tailwind-variants' `tv()`; add new type styles here too. */
+export const twMergeConfig = {
+	extend: {
+		theme: {
+			text: [
+				'display-md',
+				'heading-xl',
+				'heading-sm',
+				'body-lg',
+				'body-md',
+				'body-sm',
+				'label-md',
+				'label-sm',
+				'label-xs'
+			]
+		}
+	}
+};
+
+const twMerge = extendTailwindMerge(twMergeConfig);
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));

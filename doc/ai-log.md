@@ -24,6 +24,14 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-15] Claude Code — Review plan button contrast
+- **Task:** The user asked to check the Review plan button's contrast.
+- **Generated:** Diagnosis from computed styles: 1.20:1, white label on mint, because tailwind-merge dropped the colour class next to the custom `text-body-md`. Fix: type styles registered with tailwind-merge (`cn()` and Button's `tv()`); pill buttons on `text-label-md`.
+- **Changed:** —
+- **Judged by:** Computed styles before/after on Home and `/plan` (only the two pill buttons changed, now matching Figma `label/md` 16/24); contrast audit of every text on a solid background (none below 4.5:1); Review plan 14.08:1. `check`, `lint`, `build` pass.
+- **Verdict:** pending
+- **Assets:** —
+
 ### [2026-10-15] Claude Code — Sky video: load jump, contrast check, greeting typewriter
 - **Task:** The user saw a jump on load and weak contrast in places over the new sky video; then asked for a typewriter effect on the Home greeting with line breaks that don't move.
 - **Generated:** A diagnosis (throttled-load screenshot series, per-frame scene scores, loop-seam check, per-text contrast measured over 6 pinned video times); a new poster (`nishita-sky-poster.webp`, the video's first frame as Edge renders it); `Sky` now preloads that poster as an `<img>` under the video and fades the video in on `playing`; a `Typewriter` component.
