@@ -204,16 +204,18 @@
 		transform: translateX(100%);
 	}
 }
+/* Screens are transparent over the shared sky video, so the screen being
+   covered fades out fully instead of dimming. */
 @keyframes screen-out-left {
 	to {
 		transform: translateX(-30%);
-		opacity: 0.4;
+		opacity: 0;
 	}
 }
 @keyframes screen-in-left {
 	from {
 		transform: translateX(-30%);
-		opacity: 0.4;
+		opacity: 0;
 	}
 }
 @keyframes screen-out-right {

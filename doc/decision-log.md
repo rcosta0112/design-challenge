@@ -8,6 +8,54 @@ Newest first. To add an entry, insert it above the first one. Each entry: Contex
 
 ---
 
+## [2026-10-15] [UX] — Home greeting types itself in
+
+**Context:** The user asked for a typewriter effect on "Hi, Alex. What can I help you with today?", with line breaks that don't change as words complete. Eigodojo has a script for it, judged too much here.
+
+**Decision:** A small `Typewriter` component: every character is laid out from the start and the untyped ones are only transparent (35 ms per character, 400 ms delay, each character fading in), so wrapping is final from the first frame. Plays once per visit (not again when returning from `/plan`). Reduced motion shows the text at once. Screen readers get the full sentence.
+
+**Alternatives considered:** Appending text as it types (rejected: the lines re-wrap as words complete, the problem the user named). Eigodojo's script (rejected by the user as too much).
+
+**Rationale:** The greeting is the assistant's first "voice", so it reads like it's being said, without layout movement.
+
+**Status:** Built and checked: line positions and heading height are identical at every step.
+
+## [2026-10-15] [Visual] — Sky video cut to its dark stretch
+
+**Context:** Follow-up to "Sky video: load jump fixed, contrast open". The user picked "cut the loop to its dark stretch" over a scrim or dimming.
+
+**Decision:** The video is now `nishita-sky-dark.mp4`: the source's 0–24 s (night → first orange glow on the horizon), then the same stretch backwards (the source's last 24 s, which mirror it), so 48 s, 2.5 MB (was 6.5 min, 23.6 MB). Brightness is flat to ~19 s and climbs steeply after 25 s; the bottom turns beige by 27 s. The poster was regenerated from the new first frame. `0011.webp` stays for Figma parity only.
+
+**Alternatives considered:** A ~55% dark scrim (rejected: the sun becomes a grey smudge); dimming the video (same trade-off); a 20 s cut (safer, but loses the glow that makes the motion visible).
+
+**Rationale:** Mint Dark was designed on a dark sky; this keeps every text over the sky at the contrast it was designed for, keeps some motion, and is ~10× lighter for a phone.
+
+**Status:** Built and measured: every text element passes at 9 pinned times across the loop (0–47 s), on Home and `/plan`. Turnaround and loop seams have no visible jump. `check`, `lint`, `build` pass.
+
+## [2026-10-15] [Visual] — Sky video: load jump fixed, contrast open
+
+**Context:** The user saw a jump on load and weak contrast in places. Diagnosis: the video itself is smooth (no frame-to-frame spikes, clean loop seam). The jump came from the page: (1) on a slow network the `0011` poster arrived late (~2.5 s, competing with the 23.6 MB video), so the plain background showed first; (2) the poster was not the video's first frame, so playback start changed the colours. Contrast: the loop runs night → sunrise → bright white sun and back; measured over 6 pinned times, everything passes on the dark frames, but around 50–120 s the greeting, thread text, top bar and the translucent cards drop as low as ~1:1 (white on white).
+
+**Decision:** Poster is now `nishita-sky-poster.webp`, the video's own first frame as the browser renders it (6 KB), preloaded and shown as an `<img>` under the video; the video fades in (600 ms) only on `playing`. Contrast: not fixed yet; it's a visual call. Options: a dark scrim over the video (~55% to hold 4.5:1 over the sun), cut the loop to its dark stretch, or dim the video.
+
+**Alternatives considered:** Keeping `0011` as the poster (rejected: it doesn't match frame 0).
+
+**Rationale:** The first paint and the moment playback starts should look identical.
+
+**Status:** Jump fixed and re-measured on a throttled load (no visible change). Contrast: resolved by "Sky video cut to its dark stretch".
+
+## [2026-10-15] [Visual] — Prototype background: looping sky video
+
+**Context:** The user asked for `resources/nishita-sky-pingpong.mp4` as the background, autoplaying and looping, covering the screen with no gaps.
+
+**Decision:** One muted, looping, inline `<video>` (`object-fit: cover`) in the phone frame, behind every screen, rather than one per screen, so it keeps playing across route changes. The `0011` still is its poster. With reduced motion the video stays paused on the poster. Screens are now transparent, so in the route transition the covered screen fades out fully (it used to dim to 40%).
+
+**Alternatives considered:** A video per `Screen` (rejected: it restarts and flashes on every route change).
+
+**Rationale:** The sky moves continuously through the whole journey, and the content transitions sit on top of it.
+
+**Status:** Built and checked in Chrome at desktop, 390 × 844 and 430 × 640: it plays, loops, fills the frame, and keeps playing across `/` → `/plan`. The file is 23.6 MB (6.5 min, ~480 kbps), heavy for a phone on mobile data; a shorter or re-encoded cut would help. Figma still shows the `0011` still.
+
 ## [2026-10-15] [System] — Figma ↔ prototype reconciliation after the shadcn token alignment
 
 **Context:** After the token alignment, the user asked to check Figma against the prototype, with Figma as the only source of truth where possible.

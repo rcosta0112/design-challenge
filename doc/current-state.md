@@ -22,6 +22,7 @@ Where the project stands now. Overwrite this file at the end of each work block,
 - **User pick:** the `ab-00` sky (a dark one to match: `0011` or `0001`).
 - **User review:** all hi-fi screens. Note that `ab-04.adjust` dropped the "Target date" row to fit.
 - **Prototype:** all screens built in `code/` (`ab-00` → `ab-06`, full journey clickable, transitions, reduced motion; `code/README.md`). Next: user review in the browser (`npm run dev` in `code/`, port 5180), Vercel setup (user), test on a real phone, tick the checks in `prototype-spec.md`.
+- **Sky video:** load jump fixed (matching poster, fade-in); loop cut to its dark stretch (`nishita-sky-dark.mp4`, 48 s, 2.5 MB; all text passes contrast across it); greeting typewriter added. Not committed yet.
 - **Figma ↔ prototype reconciled** (decision-log "Figma ↔ prototype reconciliation"). **User decision:** Composer mic/send icon stroke (2 px vs scaled elsewhere).
 - **Tokens, left over:** `success` values are proposed and unmeasured. Check in the browser: the shadcn-svelte button/slider/switch (`rounded-lg` is now 12 px) and the Tailwind lock-down (default palette and radii removed; shadows still available as exceptions; `tokens.md` › Tailwind setup).
 - **Figma backlog (proposed 2026-10-15, waiting on the user to prioritise):**

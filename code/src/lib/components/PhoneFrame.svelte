@@ -7,6 +7,7 @@
 -->
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import Sky from './Sky.svelte';
 	import StatusBar from './StatusBar.svelte';
 	import Toast from './Toast.svelte';
 
@@ -17,6 +18,7 @@
 	<div
 		class="relative h-full w-full overflow-hidden bg-background [--safe-bottom:max(env(safe-area-inset-bottom),12px)] [--safe-top:env(safe-area-inset-top)] sm:h-[874px] sm:max-h-full sm:w-[402px] sm:rounded-[48px] sm:[--safe-bottom:34px] sm:[--safe-top:50px]"
 	>
+		<Sky />
 		{@render children()}
 		<StatusBar />
 		<Toast />

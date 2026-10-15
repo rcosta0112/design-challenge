@@ -24,6 +24,14 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-15] Claude Code — Sky video: load jump, contrast check, greeting typewriter
+- **Task:** The user saw a jump on load and weak contrast in places over the new sky video; then asked for a typewriter effect on the Home greeting with line breaks that don't move.
+- **Generated:** A diagnosis (throttled-load screenshot series, per-frame scene scores, loop-seam check, per-text contrast measured over 6 pinned video times); a new poster (`nishita-sky-poster.webp`, the video's first frame as Edge renders it); `Sky` now preloads that poster as an `<img>` under the video and fades the video in on `playing`; a `Typewriter` component.
+- **Changed:** Contrast fix was left to the user, who picked cutting the loop to its dark stretch over a scrim or dimming. Claude chose the 24 s cut point from per-second brightness, measured contrast and frames, and built the 48 s loop from the source's mirrored halves (decision-log "Sky video cut to its dark stretch").
+- **Judged by:** Re-ran the throttled load: no visible change until playback, then a mean colour difference of 1–3 /765 (invisible). Typewriter: line tops and heading height identical at every step from 0 to 40 characters; reduced motion shows the text at once. `check`, `lint` pass.
+- **Verdict:** pending
+- **Assets:** —
+
 ### [2026-10-15] Claude Code (Figma MCP) — Wireframe page tidy-up
 
 - **Task:** Put each wireframe on its own board, like the other utility pages.

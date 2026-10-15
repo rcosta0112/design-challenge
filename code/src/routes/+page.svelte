@@ -13,6 +13,7 @@
 	import PlanCard from '$lib/components/PlanCard.svelte';
 	import Screen from '$lib/components/Screen.svelte';
 	import TabBar from '$lib/components/TabBar.svelte';
+	import Typewriter from '$lib/components/Typewriter.svelte';
 	import { DURATION, ms } from '$lib/motion.svelte';
 	import { plan } from '$lib/plan.svelte';
 	import { INTENT, thread } from '$lib/thread.svelte';
@@ -29,8 +30,12 @@
 	<div class="flex min-h-0 flex-1 flex-col gap-4 px-6 pt-2 pb-6">
 		<div class="flex min-h-0 flex-1 items-center justify-center">
 			<h1 class="w-75 text-center text-heading-xl">
-				<span class="text-brand">Hi, Alex.</span><br />
-				What can I help you with today?
+				<Typewriter
+					lines={[
+						{ text: 'Hi, Alex.', class: 'text-brand' },
+						{ text: 'What can I help you with today?' }
+					]}
+				/>
 			</h1>
 		</div>
 		<Composer script={INTENT} onsend={send} onactivate={() => (tag = 'ab-01.intent')} morph />
