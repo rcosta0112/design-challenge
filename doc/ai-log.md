@@ -304,6 +304,22 @@ Newest first.
 - **Verdict:** ✏️ Accepted as a starting point; open questions are listed in `current-state.md`.
 - **Assets:** —
 
+### [2026-10-15] Claude Code — iOS Safari black strip under the address bar
+- **Task:** Fix the black strip behind Safari's address bar on iPhone.
+- **Generated:** Diagnosis (`h-dvh` + `bg-black` + no `viewport-fit=cover`) and the fix: a fixed `100lvh` sky on phones, plus a body colour matched to the sky.
+- **Changed:** —
+- **Judged by:** Pending a retest on the user's iPhone. There is no automated cross-browser testing; Playwright WebKit does not simulate iOS toolbars.
+- **Verdict:** ✏️ Pending device check
+- **Assets:** `code/src/app.html`, `code/src/lib/components/Sky.svelte`, `code/src/routes/layout.css`
+
+### [2026-10-15] Claude Code — Cross-browser tests from Eigodojo
+- **Task:** Copy Eigodojo's Playwright setup and run it on the prototype.
+- **Generated:** `playwright.config.ts`, `tests/a11y.spec.ts`, `tests/visual.spec.ts`, `tests/layout.spec.ts`, npm scripts and 10 screenshot baselines.
+- **Changed:** Adapted, not copied: different routes and port, reduced motion, an iPhone 15 Pro Max project and a sky layout check.
+- **Judged by:** Two runs, 22/22 passing; spot-checked the iPhone SE and iPhone 14 baselines by eye.
+- **Verdict:** ✅ Accepted. `/plan` coverage stops at ab-02.
+- **Assets:** `code/playwright.config.ts`, `code/tests/`
+
 <!-- Template
 ### [date] Tool — Short title
 - **Task:**

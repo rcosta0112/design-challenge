@@ -338,3 +338,27 @@ Newest first. To add an entry, insert it above the first one. Each entry: Contex
 **Rationale:** The presentation is built from these docs, so each piece of the brief needs a home from the start.
 
 **Status:** Done; folders and skeletons created.
+
+## [2026-10-15] [Prototype] — Sky runs under iOS Safari's address bar
+
+**Context:** On an iPhone in Safari, a black strip showed behind the floating address bar. The frame was `h-dvh`, which stops above the bar, the body was `bg-black`, and the viewport meta had no `viewport-fit=cover`.
+
+**Decision:** Add `viewport-fit=cover`. On a phone, the sky layers are `position: fixed` and `100lvh` tall, so they run under the bar; in the desktop frame they still fill the frame. On a phone the body takes the sky's bottom-edge colour (`#262c22`), so overscroll blends in.
+
+**Alternatives considered:** making the whole frame `100lvh` (then the bottom content would sit under the bar); `theme-color` (iOS 26 Safari tints from page content, not the meta tag).
+
+**Rationale:** Only the background needs to run under the bar. The content stays inside the visible viewport and the safe areas.
+
+**Status:** Done; needs a check on a real iPhone.
+
+## [2026-10-15] [Prototype] — Cross-browser tests: Eigodojo's Playwright setup, adapted
+
+**Context:** The user asked to copy Eigodojo's cross-browser setup (`apps/gallery`) and run it.
+
+**Decision:** Playwright with the same three suites: axe a11y (`figma-402` only), visual screenshots and a layout check. The device projects are figma-402 (Chromium), iPhone SE, 14 and 15 Pro Max (WebKit) and Pixel 7 (Chromium). Changes from Eigodojo: port 5180, routes `/` and `/plan` instead of the component gallery, an added iPhone 15 Pro Max (closest to the 402 Figma frame), reduced motion emulated so the sky video and typewriter don't make screenshots flaky, and `layout.spec.ts` as a guard for the Safari sky fix.
+
+**Alternatives considered:** a straight copy (its specs target a gallery page this repo doesn't have); BrowserStack or a real-device cloud (overkill for a 4–6 h challenge).
+
+**Rationale:** WebKit is the closest thing to Safari that runs locally. It still doesn't simulate iOS toolbars or safe areas, so the iPhone stays the final check.
+
+**Status:** Done. 22/22 pass. The `/plan` screenshot only covers the first message (ab-02); ab-03 to ab-06 need interaction steps added.
