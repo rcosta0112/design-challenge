@@ -33,7 +33,7 @@
 	src={POSTER}
 	alt=""
 	fetchpriority="high"
-	class="pointer-events-none absolute inset-0 size-full object-cover"
+	class="sky-layer pointer-events-none object-cover"
 	aria-hidden="true"
 />
 <video
@@ -46,7 +46,7 @@
 	disablepictureinpicture
 	onplaying={() => (playing = true)}
 	onpause={() => (playing = false)}
-	class="pointer-events-none absolute inset-0 size-full object-cover transition-opacity ease-out"
+	class="sky-layer pointer-events-none object-cover transition-opacity ease-out"
 	style:opacity={playing ? 1 : 0}
 	style:transition-duration="{ms(600)}ms"
 	aria-hidden="true"
