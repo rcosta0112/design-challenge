@@ -8,23 +8,29 @@ Where the project stands now. Overwrite this file at the end of each work block,
 
 - **Phase 1:** research, visual audit (17 apps), colour audit, assistant flows (`01-understand/`). Look: Klarna + Wise.
 - **Wireframes** in Figma (section `17:462`): `ab-00.start`…`ab-06.done` + `ab-04.adjust--tight`, from a local `wf-kit`.
-- **Phase 2, Define:** `02-define/` filled in: problem (barriers, success), 5 principles with "rules out", journey (three surfaces, fixed step-4 path, maths check, before → after).
-- **Kit + first hi-fi screen:** shadcn picked, rebuilt locally (Figma page `Components`: variables, Geist styles, Lucide icons, Composer, BalanceCard, TabBar, AiOrb). `ab-00.start` in hi-fi on page `Screens`. Tokens mirrored in `04-system/tokens.md`.
-- **Design docs:** `03-design/` filled in: full conversation script, screen specs per tag, prototype spec (routes, one `plan` store, transitions).
+- **Phase 2, Define:** `02-define/`: problem, 5 principles, journey, before → after.
+- **Design docs:** `03-design/`: conversation script, screen specs, prototype spec.
+- **Direction picked: `Mint Dark`** (dark over the user's sky images; decision-log 2026-10-15). Variable mode + 11 new vars (`04-system/tokens.md`). No-shadow/no-border rule now applies at component level.
+- **Kit:** page `Components`: 14 icons, Composer, BalanceCard, TabBar, AiOrb + TopBar, ChatBubble, StatusStep, Chip, Banner, Button, SummaryRow, SheetHeader, EstimateTag, CashflowBar, Slider, ToggleRow, ProjectionChart, `Background` (14 skies). Inventory in `04-system/components.md`.
+- **Hi-fi screens** (page `Screens`):
+  - Row y=1100: `ab-00.start--dark-{0031,0001,0011,0041,0141}`.
+  - Row y=2200: `ab-02.understand`, `ab-04.adjust`, `ab-04.adjust--tight` (all on `sky=0031`).
+  - Older light/mint `ab-00` frames are still in row y=0.
 
 ## Next
 
-- **User review:** the step-4 path and €375 → €430 decision (`decision-log.md`, proposed); if OK, add the third fix chip to `ab-04.adjust--tight` and update the `ab-04` banner wording in Figma.
-- **User review:** hi-fi `ab-00.start`. **User pick:** brand accent (butter / aqua / periwinkle); butter is wired but not used on `ab-00`.
-- **Phase 4:** add OptionCard, StatusStep, Banner, ProgressBar, BalanceCard, StatusBar to `04-system/components.md` (listed at the end of `03-design/screens.md`).
-- **Phase 3:** next hi-fi screen (`ab-01.intent`, uses Composer `State=Filled`).
-- Fill in "Changed" and "Verdict" on the pending `ai-log.md` entries; log hours in `time-log.md`.
+- **User pick:** which sky for `ab-00` (and whether thread screens use the same one or a calmer, darker one such as `0001`).
+- **User review:** hi-fi `ab-02` and `ab-04`. Note that `ab-04.adjust` dropped the "Target date" row to fit; the sub-line and chart still show 1 Jun 2027.
+- Measure contrast of the `Mint Dark` values (estimated so far) and record it in `color-audit.md`.
+- Phase 3: hi-fi `ab-01`, `ab-03` (needs OptionCard, PlanCard), `ab-05`, `ab-06` (ProgressBar).
+- Clean up row y=0 (old `Light`/`Mint` frames) once the direction is final.
+- Log hours in `time-log.md`; fill in "Verdict" on pending `ai-log.md` entries.
 
 ## Open questions (waiting on the user)
 
-0. **Story:** proposed answer: recommend €375, approve €430 after adjusting. Confirm.
-1. **Brand:** a fictional, neutral bank name? Placeholder: **[Bank]**. Persona: **Alex Brooke** (decided; the assistant says "Alex").
-2. **Prototype:** fallback minimal Figma prototype? Where does the app live (`code/`?) and where is it hosted?
+0. **Story:** recommend €375, approve €430 after adjusting. Confirm.
+1. **Brand:** fictional bank name? Placeholder **[Bank]**. Persona **Alex Brooke**.
+2. **Prototype:** where does the app live (`code/`?) and where is it hosted?
 3. **Figma plan:** Code Connect needs Organization/Enterprise; otherwise a spec plus a small component in `code/`.
 4. **Hours:** count only hands-on time, AI-agent time separately? (Proposed.)
 5. **Slides:** Figma Slides, or another format?

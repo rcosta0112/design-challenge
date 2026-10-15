@@ -73,3 +73,48 @@ To confirm, then set up as Figma variables (`04-system/tokens.md` mirrors them):
 - **Dark mode:** ink becomes the canvas; the pale accent keeps working (ink-on-accent stays above 10:1).
 
 **Recommendation:** **butter** as the brand accent, because it's the only hue nobody in the set owns, with a **periwinkle-to-aqua gradient** as the AI signal. If butter clashes with warning states in the data, aqua is the fallback.
+
+## Variation B: "Mint", closer to Wise (2026-10-15)
+
+The user asked for a second direction closer to Wise: brand accent **`#0FFFB3`** (mint), high-contrast text on white, light/medium grey cards, the grey balanced by the accent. **No drop shadows; no borders unless strictly necessary; contrast is fixed by adjusting colours (more greys if needed), not by adding strokes.**
+
+Built as the Figma variable mode `Mint` (collection `shadcn`) and the frame `ab-00.start--mint`.
+
+| Role | Hex | Contrast |
+|---|---|---|
+| Canvas | `#FFFFFF` | — |
+| Ink | `#0E1512` (green-tinted near-black) | 18.5:1 on white, 16.4:1 on card |
+| Card (grey 100) | `#EEF2F0`, cool grey leaning toward the mint | separates from white by fill, no stroke |
+| Muted (grey 200) | `#DDE4E0`: disabled send, fills on cards | ink 14.3:1 |
+| Secondary text (grey 600) | `#525E59` | 6.8:1 white, 6.0:1 card, 5.2:1 grey 200 |
+| Brand accent | `#0FFFB3`, **fill only**, ink on it | ink on mint 14.1:1; mint on white 1.3:1 (never text) |
+| AI gradient | `#0FFFB3` → `#7DD3FC` | ink on sky 11.1:1 |
+
+- **Balance:** grey carries the surfaces; mint marks the one key fact or action per screen (on `ab-00`: the payday pill).
+- **Primary button** = mint with ink text, like Wise's lime.
+- **Risk:** mint sits in the green family Wise, Chime and N26 own. It reads as "close to Wise" by design; the tinted ink and cool greys keep it from being a copy.
+- If a stroke is ever truly needed (input focus), use a grey that reaches 3:1, e.g. grey 500 `#7C8883` (3.7:1 white, 3.3:1 card).
+
+## Review: two dark-background variations of Mint (2026-10-15)
+
+The user made two versions of `ab-00.start--mint` with a dark background, keeping the Mint components unchanged on top. **A** `23:748` uses a blue starry-sky photo. **B** `23:820` uses a dark slate gradient with a warm glow in the bottom-left corner.
+
+**What works:** the greeting reads better on dark. `Hi, Alex.` in mint on dark (about 12:1 on B) gives mint a text role it can't have on white (1.3:1). The dark base also matches the "dark-first, AI-native" direction (Visual direction, option A).
+
+**Issues in both:**
+- **Two modes on one screen.** The light TabBar, Composer and BalanceCard sit on a dark backdrop. The white TabBar cuts the image off like a slab, and the screen reads as a light app pasted onto a wallpaper.
+- **The Composer and BalanceCard share one fill** (`#EEF2F0`), so the main action (ask) doesn't stand out from the information (balance).
+- **The top half is empty.** The greeting floats in about 470px of background.
+- **Two mint accents** (greeting and payday pill). This breaks the "one mint per screen" rule in Variation B.
+
+**A, the sky photo:** reads as space/sci-fi or crypto rather than a bank, and saturated blue fights the mint. Stars and clouds change the contrast behind the text. It's also a raster asset, not a token, so it's harder to theme and build.
+**B, the slate gradient:** more restrained and bank-like, and it can be made from tokens. The warm glow sits only behind the cards, so it looks accidental, and amber is a third hue alongside mint and slate.
+
+**Recommendations:**
+1. **Pick B.** Rebuild it as a variable mode `Mint Dark` rather than a background layer. Canvas `#0E1512` (the Mint ink), card `#1A2420`, muted `#26332E`, text `#F2F5F3`, secondary `#9AA8A2`. These values are proposed and need a contrast check.
+2. **Give the glow a job.** Use the AI gradient (mint → sky) behind the greeting and Composer, so it marks where the AI lives. Later it can be the AiOrb's thinking state. Drop the amber.
+3. **Hierarchy by fill:** a light Composer (the one bright surface, the action) over a dark BalanceCard (information). Or keep both dark and use mint on the send button.
+4. **TabBar on the dark canvas,** with no stroke, separated by fill only, or transparent over the gradient.
+5. **Keep one accent:** mint for the greeting name or the payday pill, not both. On dark, the greeting is the better use.
+6. **Fill the empty space with 2–3 suggestion chips** above the Composer (e.g. "Can I afford…", "Save for…"). These are standard for AI assistants (`assistant-flows.md`) and hint at the story.
+7. **Housekeeping:** `23:748` is a flattened image (no layers), which breaks the "components only" rule. Three frames share the tag `ab-00.start--mint`. Rename them, e.g. `--mint-sky` and `--mint-dark`.

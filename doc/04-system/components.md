@@ -1,6 +1,6 @@
 # Components
 
-**Status:** First components built on page `Components` (`21:372`), 2026-10-15. **Phase:** 4.
+**Status:** First components built on page `Components` (`21:372`), 2026-10-15; thread components for `ab-02`/`ab-04` added the same day (x ≈ 3200). No shadows or strokes on any product component; cards on images use a 24 px background blur. **Phase:** 4.
 
 The component inventory for the Figma library. Every component uses Auto Layout and semantic variables only. Build only what the screens need.
 
@@ -40,24 +40,28 @@ The template's colours are hard-coded on purpose: these pages are scaffolding, n
 
 | Component | Variants / properties | Used on | Status |
 |---|---|---|---|
-| Button | type: primary / secondary / ghost · state: default / pressed / disabled · icon: on / off | all | ☐ |
-| Chip | type: suggestion / assumption (editable) · state: default / selected | `ab-01`, `ab-02`, `ab-03` | ☐ |
-| ChatBubble | sender: user / ai · content: text / text + attachment | `ab-01`–`ab-04` | ☐ |
+| Button | variant: primary / secondary · Label (pressed/disabled/icon still to do) | `ab-04` | ✅ v1 |
+| Chip | type: assumption (trailing pencil) / suggestion (leading sparkles) · Label | `ab-02`, `ab-04` | ✅ v1 |
+| ChatBubble | sender: user (bubble, max width 280) / ai ("Assistant" label + AiOrb, no bubble) · Message | `ab-02`, `ab-04` | ✅ v1 |
 | Composer | state: empty / filled · Text property | `ab-00`–`ab-04` | ✅ v1 (no voice toggle yet) |
 | **PlanCard** | state: draft / adjusting / approved · size: compact / expanded | `ab-03`–`ab-06` | ☐ |
-| Slider | state: default / dragging · value label | `ab-04` | ☐ |
-| ToggleRow | on / off | `ab-04` | ☐ |
+| Slider | status: ok / tight · €300–€500, marker at ~€440 spare | `ab-04` | ✅ v1 |
+| ToggleRow | on only · Label | `ab-04` | ✅ v1 |
 | FitMeter | status: comfortable / tight / over | `ab-03`, `ab-04` | ☐ |
-| CashflowBar | — (values as text properties) | `ab-02` | ☐ |
-| ProjectionChart | — | `ab-03`, `ab-06` | ☐ |
-| SummaryRow | with / without icon | `ab-05` | ☐ |
-| Sheet | — (handle + slot) | `ab-04`, `ab-05` | ☐ |
-| TopBar | title / back | all | ☐ |
+| CashflowBar | — (stacked bar: fixed `chart-1`, spending `chart-2`, spare = AI gradient; EstimateTag) | `ab-02` | ✅ v1 |
+| ProjectionChart | — (Oct→Jun, December plateau, goal line, EstimateTag) | `ab-04` | ✅ v1 |
+| SummaryRow | Label · Value | `ab-04` | ✅ v1 |
+| SheetHeader | Title (handle + title + Done); the sheet body is a frame on the screen, filled `color/sheet` | `ab-04` | ✅ v1 |
+| TopBar | Title (back + title + more) | `ab-02`, `ab-04` | ✅ v1 |
 | TabBar | 4 TabItem instances (Home active) | `ab-00`, `ab-01`, `ab-06` | ✅ v1 |
 | TabItem | state: active / inactive · Label · Icon (instance swap) | inside TabBar | ✅ |
 | BalanceCard | Account · Amount · Fact (text properties) | `ab-00`, `ab-01` | ✅ |
 | AiOrb | — (gradient bound to `color/ai-from` / `ai-to`) | `ab-00`, AI turns | ✅ |
-| icon/* | Lucide: house, arrow-left-right, credit-card, user, mic, arrow-up, calendar | all | ✅ |
+| icon/* | Lucide: house, arrow-left-right, credit-card, user, mic, arrow-up, calendar, chevron-left, ellipsis, check, triangle-alert, info, pencil, sparkles | all | ✅ |
+| StatusStep | Step | `ab-02` | ✅ |
+| Banner | kind: info / warning · Text | `ab-04` | ✅ v1 |
+| EstimateTag | — (sparkles + "Estimate") | inside CashflowBar, ProjectionChart | ✅ |
+| Background | sky: 14 variants from the user's sky sequence (default `0031`) | Mint Dark screens | ✅ |
 | StatusBar, HomeIndicator | From the iOS 18 kit (iOS 26 refused import) | all | ✅ library |
 
 ## Naming

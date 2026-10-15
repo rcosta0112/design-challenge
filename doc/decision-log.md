@@ -8,6 +8,39 @@ Newest first. To add an entry, insert it above the first one. Each entry: Contex
 
 ---
 
+## [2026-10-15] [Visual] — Dark direction picked: "Mint Dark" over sky images
+
+**Context:** The user reviewed two dark-background versions of `ab-00` and picked the slate one. They added 14 sky images to the library and asked for more variations, a palette that fixes the review's issues (`color-audit.md`, "Review: two dark-background variations"), and hi-fi `ab-02` and `ab-04`.
+
+**Decision:** Add a third variable mode, `Mint Dark`, plus 11 semantic variables. Main changes:
+- Cards are smoked glass (ink at 62% with a 24 px background blur).
+- The Composer is the one bright surface (`color/composer*`).
+- The TabBar sits on the dark canvas (`color/bar`), and sheets have their own surface (`color/sheet`).
+- Tight status gets amber (`color/warning*`).
+- Mint is used for the greeting name, primary controls and estimates; the payday pill is neutral.
+- The images became a `Background` component set (`sky=…`).
+- The no-shadow/no-border rule now applies at component level: Composer shadow and stroke, BalanceCard stroke and TabBar stroke are removed.
+
+**Alternatives considered:** Hard-code the images and colours per frame (rejected: it breaks the components-only rule). Light glass cards (rejected: on the warm parts of `sky0031`, white text drops to about 3.5:1). Set the Composer to explicit `Mint` mode inside dark screens (rejected: hard to hand off to code).
+
+**Rationale:** One mode switch themes every component. Contrast doesn't depend on which part of the image a card sits on. The bright Composer makes "ask" the primary action.
+
+**Status:** Built. `ab-00` variations on 5 skies, plus `ab-02.understand`, `ab-04.adjust` and `ab-04.adjust--tight` on `sky=0031`. The user picks the sky. Contrast of the new values is estimated, not measured.
+
+## [2026-10-15] [Visual] — Second palette direction "Mint", closer to Wise; no shadows, minimal borders
+
+**Context:** The user asked for a variation closer to Wise, with brand accent `#0FFFB3`, high-contrast text on white and grey card backgrounds balanced by the accent. They also set three rules: no drop shadows, no borders unless strictly necessary, and contrast is fixed by adjusting colours (adding greys), not by adding strokes.
+
+**Decision:** Add the variable mode `Mint` to the `shadcn` collection (white canvas, ink `#0E1512`, card grey `#EEF2F0`, muted grey `#DDE4E0`, secondary `#525E59`, mint as fill only) and the frame `ab-00.start--mint`. Surfaces separate by fill. The TabBar's top stroke is removed in this variation, and the payday pill uses mint as the one accent on the screen. Values and contrast are in `color-audit.md`, Variation B.
+
+**Alternatives considered:** Retinting the butter direction (the user wanted a distinct option); a lime-and-forest copy of Wise (too close, and the accent was already given).
+
+**Rationale:** As a mode, it's the same components and the same bindings. The choice between butter and mint is one switch, and either can carry through to the prototype tokens.
+
+**Status:** Proposed. The user picks between `Light` (butter) and `Mint`. The no-shadow/no-border rules apply to both.
+
+---
+
 ## [2026-10-15] [System] — shadcn as the kit, rebuilt locally with shadcn's structure
 
 **Context:** The user picked shadcn from the shortlist (`03-design/ui-kits.md`). The Obra shadcn/ui Community file isn't linked to our Figma file, and the MCP can't add Community libraries.

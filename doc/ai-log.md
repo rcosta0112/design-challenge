@@ -24,6 +24,42 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-15] Claude Code (Figma MCP) — Mint Dark mode, thread components, hi-fi `ab-02` and `ab-04`
+
+- **Task:** Use the user's sky images for more `ab-00` variations, adjust the palette to fix the review issues, and build hi-fi `ab-02` and `ab-04`.
+- **Generated:**
+  - Variable mode `Mint Dark` and 11 new colour variables; text styles `heading/sm` and `label/md`.
+  - 7 Lucide icons and 12 components: TopBar, ChatBubble, StatusStep, Chip, Banner, Button, SummaryRow, SheetHeader, EstimateTag, CashflowBar, Slider, ToggleRow, ProjectionChart, plus the Background set.
+  - Frames `ab-00.start--dark-{0031,0001,0011,0041,0141}`, `ab-02.understand`, `ab-04.adjust` and `ab-04.adjust--tight` on page Screens (y = 1100 and 2200).
+- **Changed:** Agent self-corrections:
+  - Components were stuck at a fixed height because `resize()` resets sizing; switched to hug.
+  - The user bubble didn't wrap; now uses `maxWidth`.
+  - The agent deleted the TopBar by mistake and restored it.
+  - `ab-04` overflowed; removed the Target date row (repeated in the sub-line and chart) and tightened the spacing.
+  - Changed the toggle hint and made the step checks grey (one-accent rule).
+  - User review: *pending*.
+- **Judged by:** Screenshot of each screen; every node is an instance or a frame with bound variables. Copy is from `conversation-script.md`. Contrast is not yet measured.
+- **Verdict:** pending
+- **Assets:** Figma page Screens `21:555`; Components `21:372`
+
+### [2026-10-15] Claude Code (Figma MCP) — Review of two dark-background variations
+
+- **Task:** Review the user's two Figma variations of `ab-00.start--mint` (sky photo `23:748`, slate gradient `23:820`) and suggest improvements.
+- **Generated:** Critique and 7 recommendations, saved to `01-understand/color-audit.md` ("Review: two dark-background variations"). Recommends B, rebuilt as a `Mint Dark` variable mode with an AI-gradient glow.
+- **Changed:** —
+- **Judged by:** Screenshots and variable bindings read via the Figma MCP. Checked against the one-accent rule, the components-only rule and the visual-direction decision. Dark-mode hex values are proposed; contrast is not yet verified.
+- **Verdict:** pending
+- **Assets:** —
+
+### [2026-10-15] Claude Code — "Mint" palette variation (Wise-like)
+
+- **Task:** Build a second colour direction closer to Wise from the user's accent `#0FFFB3` and a reference screenshot.
+- **Generated:** A grey ramp tinted toward the mint, contrast checks (script, WCAG 2.x), the Figma mode `Mint` and the frame `ab-00.start--mint`.
+- **Changed:** Following the user's notes during the work: the Composer drop shadow and the TabBar stroke were removed, and contrast was handled with greys instead of strokes.
+- **Judged by:** Every text pair is 5.2:1 or higher; mint is never used as text (1.3:1 on white). Screenshot checked against the reference.
+- **Verdict:** pending
+- **Assets:** Figma `24:141`
+
 ### [2026-10-15] Claude Code (Figma MCP) — shadcn kit and hi-fi `ab-00.start`
 
 - **Task:** The user picked shadcn. Create a new page and make a high-fidelity version of the first wireframe (`ab-00.start`).
