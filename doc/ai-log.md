@@ -24,6 +24,13 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-16] Claude Code (Figma MCP) — Screens page annotations
+
+- **Generated:** On Screens: an overview board (frames grouped by screen; story order, transitions and the state change live in the prototype, with link; "preserving context" shown in the prototype; Flow 1 covers the happy path), two row headers, and a note under each of the 8 frames naming the brief requirement and principle.
+- **Changed:** Note text enlarged from the template's caption size to 16 px after the screenshot.
+- **Judged:** Notes sit outside the frames, so the screens stay built from instances only; requirement mapping checked against `criteria-map.md`.
+- **Verdict:** ✏️
+
 ### [2026-10-16] Claude Code (Figma MCP) — Cover and Read me pages
 
 - **Generated:** A `Read me` page (one board, 8 sections, text from `06-presentation/figma-readme.md`) and a cover board on the user's existing `Cover` page (title, concept line, prototype link, a clone of `ab-03.plan` as hero), both cloned from the utility-board template. Pages reordered (Cover, Read me, Screens, Components, divider, Wireframes, Archive, Reference); Archive renamed `Archive · directions explored`.
