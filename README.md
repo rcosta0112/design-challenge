@@ -8,10 +8,10 @@ Full brief and our interpretation: [`doc/brief.md`](doc/brief.md).
 
 | Deliverable | Status | Link |
 |---|---|---|
-| Figma file: 4–6 polished mobile screens + design system | Reference page done | [Design Challenge](https://www.figma.com/design/VM1bse2WYuRKqF8Umvq02C/Design-Challenge) |
-| Interactive prototype of the primary journey (SvelteKit, not Figma; see decision log) | Not started | — |
-| 1–2 summary slides (journey, rationale, AI tools, links) | Not started | — |
-| Optional: component-to-code mapping / Code Connect | Not started | — |
+| Figma file: 4–6 polished mobile screens + design system | 8 hi-fi screens, 15-board library, wireframes, research; Cover/Read me in progress | [Design Challenge](https://www.figma.com/design/VM1bse2WYuRKqF8Umvq02C/Design-Challenge) |
+| Interactive prototype of the primary journey (SvelteKit; a basic Figma prototype covers the happy path) | Live | [design-challenge-ten.vercel.app](https://design-challenge-ten.vercel.app/) |
+| 1–2 summary slides (journey, rationale, AI tools, links) | Not started; summary goes on the Figma Read me page | — |
+| Optional: component-to-code mapping / Code Connect | PlanCard spec in progress | `doc/05-handoff/plan-card.md` |
 | Submission text including hours used | Not started | see `doc/time-log.md` |
 
 ## Timeline
@@ -39,5 +39,5 @@ doc/
   04-system/             tokens, component inventory
   05-handoff/            component-to-code spec
   06-presentation/       slide outline, live-iteration prep
-code/                    optional: one component for the handoff
+code/                    the clickable prototype (SvelteKit), incl. the PlanCard handoff component
 ```

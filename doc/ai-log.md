@@ -24,6 +24,20 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-16] Claude Code (Figma MCP) — Pass plan from the review
+
+- **Generated:** A 7-step plan with review checkpoints (`06-presentation/pass-plan-2026-10-16.md`), after Plugin API reads of the Screens and Components pages (frame names, prototype links, Background usage, component sets and variants).
+- **Changed:** Scope cut by the user: Reference page, screen order, the tap-to-correct beat, desktop hint and slides left out; the AI workflow goes to a doc before Figma. Several review findings were already fixed (frame name, a basic Figma prototype, the stray frame).
+- **Judged:** Every claim about the file checked with a read first; the deletions that could break instances (Archive skies) were raised as a decision instead of planned blind.
+- **Verdict:** pending
+
+### [2026-10-16] Claude Code (Figma MCP) — Deliverables review
+
+- **Generated:** A review of the Figma file (Screens and Components screenshots, page structure), the prototype and the docs against the brief and scoring. Gaps ranked by score impact, with a suggested order: `06-presentation/deliverables-review.md`.
+- **Changed:** The user caught a wrong finding: the first pass said three pages were missing because the MCP page listing (`get_metadata` without a node) only returned loaded pages. Re-checked with the Plugin API (`figma.root.children`): all six pages exist. Review corrected; added a binding audit of the Screens page (no unbound colours, all loose text styled).
+- **Judged:** Each finding checked against the brief's wording and the actual file (metadata, screenshots, Plugin API reads); maths on the screens re-checked by hand. Lesson: verify page lists with the Plugin API, not the MCP listing.
+- **Verdict:** ✏️
+
 ### [2026-10-15] Claude Code — Review plan button contrast
 - **Task:** The user asked to check the Review plan button's contrast.
 - **Generated:** Diagnosis from computed styles: 1.20:1, white label on mint, because tailwind-merge dropped the colour class next to the custom `text-body-md`. Fix: type styles registered with tailwind-merge (`cn()` and Button's `tv()`); pill buttons on `text-label-md`.

@@ -76,4 +76,4 @@ The brief as received (2026-10-15), followed by our reading of it and the assump
 | The user already banks with [Bank]: salary arrives there, 3+ months of history | Needed for the AI to read cash flow | — |
 | Today in the story is mid-October 2026; "next summer" means June 2027 | Gives 8 monthly transfers | — |
 | Approval is the only step that moves money; the AI proposes and never acts on its own | Trust and regulation | — |
-| Light mode is required; dark mode is a stretch goal and a live-iteration candidate | Timebox | — |
+| Dark only (`Dark` mode, over a sky background); no light mode | Picked in visual exploration; one mode keeps the timebox (decision-log "Dark direction picked", "Keep only the `Mint Dark` variable mode") | A reviewer asks for light mode in the live iteration |

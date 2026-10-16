@@ -19,6 +19,8 @@ Where the project stands now. Overwrite this file at the end of each work block,
 
 ## Next
 
+- **Pass plan (2026-10-16):** `06-presentation/pass-plan-2026-10-16.md`, 7 steps with review checkpoints; 3 decisions waiting on the user.
+- **Deliverables review (2026-10-16):** `06-presentation/deliverables-review.md`: gaps by score impact and a suggested order. First: deploy the prototype, then Cover/Read me and Screens annotations.
 - **User pick:** the `ab-00` sky (a dark one to match: `0011` or `0001`).
 - **User review:** all hi-fi screens. Note that `ab-04.adjust` dropped the "Target date" row to fit.
 - **Prototype:** all screens built in `code/` (`ab-00` → `ab-06`, full journey clickable, transitions, reduced motion; `code/README.md`). Next: user review in the browser (`npm run dev` in `code/`, port 5180), Vercel setup (user), test on a real phone, tick the checks in `prototype-spec.md`.
@@ -47,6 +49,6 @@ Where the project stands now. Overwrite this file at the end of each work block,
 
 ## Links
 
-- Figma file: [Design Challenge](https://www.figma.com/design/VM1bse2WYuRKqF8Umvq02C/Design-Challenge). Reference `4:2`; Wireframes `12:2`; Components `21:372`; Screens `21:555`; Archive `48:1090`.
-- Prototype: —
+- Figma file: [Design Challenge](https://www.figma.com/design/VM1bse2WYuRKqF8Umvq02C/Design-Challenge). Page order: Screens `21:555`, Components `21:372`, Wireframes `12:2`, divider, Archive `48:1090`, Reference `4:2`.
+- Prototype: https://design-challenge-ten.vercel.app/
 - Slides: —
