@@ -24,6 +24,13 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-16] Claude Code — Favicon and app icons
+
+- **Generated:** The AiOrb as icons: `favicon.svg` (gradient `#0FFFB3` → `#7DD3FC`, matching `ai-from` → `ai-to`), `favicon.ico` (16/32/48), Apple touch icon and manifest icons (192, 512, maskable 512) on the background colour `#0e1512` with the orb's soft glow, a web manifest and `theme-color`. The default Svelte favicon removed.
+- **Changed:** —
+- **Judged:** Apple icon checked visually; the build output carries the links; `npm run check` clean.
+- **Verdict:** pending
+
 ### [2026-10-16] Claude Code — AI workflow summary
 
 - **Generated:** `06-presentation/ai-workflow.md` from `ai-log.md`: tools, the review loop, 7 generated → changed → judged examples (including rejected and reversed outputs), numbers, what AI didn't decide.
