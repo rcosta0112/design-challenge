@@ -24,6 +24,13 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-16] Claude Code (Figma MCP) — Binding audit
+
+- **Generated:** Two read-only Plugin API scripts: every component's (and every loose Screens layer's) fills, strokes, effects, text styles, radius, gap and padding checked for a variable/style binding. Result in `04-system/binding-audit.md`: 2 unbound items, both deliberate (orb glow, home-indicator padding).
+- **Changed:** —
+- **Judged:** The script skips nested instances so each value is counted once, in its own component; each unbound item was looked at and classed as an exception or a fix.
+- **Verdict:** ✅
+
 ### [2026-10-16] Claude Code (Figma MCP) — Pass plan from the review
 
 - **Generated:** A 7-step plan with review checkpoints (`06-presentation/pass-plan-2026-10-16.md`), after Plugin API reads of the Screens and Components pages (frame names, prototype links, Background usage, component sets and variants).
