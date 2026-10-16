@@ -1,6 +1,5 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
 	import { onNavigate } from '$app/navigation';
 	import PhoneFrame from '$lib/components/PhoneFrame.svelte';
 	import type { LayoutProps } from './$types';
@@ -29,8 +28,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
-	<title>[Bank] · AI-native banking prototype</title>
+	<title>WIT Design Challenge - AI-native banking prototype</title>
 </svelte:head>
 
 <PhoneFrame>
