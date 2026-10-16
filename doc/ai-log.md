@@ -24,6 +24,13 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-16] Claude Code — AI workflow summary
+
+- **Generated:** `06-presentation/ai-workflow.md` from `ai-log.md`: tools, the review loop, 7 generated → changed → judged examples (including rejected and reversed outputs), numbers, what AI didn't decide.
+- **Changed:** A first draft said the user rendered the sky in Blender; the log only records headless Blender used by the agent, so the line was reworded.
+- **Judged:** Every example traced back to a log entry before it went in.
+- **Verdict:** pending (user review)
+
 ### [2026-10-16] Claude Code (Figma MCP) — Screens page annotations
 
 - **Generated:** On Screens: an overview board (frames grouped by screen; story order, transitions and the state change live in the prototype, with link; "preserving context" shown in the prototype; Flow 1 covers the happy path), two row headers, and a note under each of the 8 frames naming the brief requirement and principle.

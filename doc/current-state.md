@@ -19,6 +19,7 @@ Where the project stands now. Overwrite this file at the end of each work block,
 
 ## Next
 
+- **Pass done (2026-10-16), steps 1–7:** docs updated; binding audit clean (`04-system/binding-audit.md`); Components page tidied (BackgroundVideo + Background fallback, variant labels, grid); Cover board + Read me page; Screens annotated; PlanCard spec done; AI workflow draft (`06-presentation/ai-workflow.md`) waiting for review before it goes into Figma. **Open:** set the file thumbnail by hand; final hours figure; mark pending AI-log verdicts; PlanCard `adjusting` and other missing states not added.
 - **Pass plan (2026-10-16):** `06-presentation/pass-plan-2026-10-16.md`, 7 steps with review checkpoints; 3 decisions waiting on the user.
 - **Deliverables review (2026-10-16):** `06-presentation/deliverables-review.md`: gaps by score impact and a suggested order. First: deploy the prototype, then Cover/Read me and Screens annotations.
 - **User pick:** the `ab-00` sky (a dark one to match: `0011` or `0001`).
