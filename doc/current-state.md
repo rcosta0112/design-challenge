@@ -49,6 +49,6 @@ Where the project stands now. Overwrite this file at the end of each work block,
 
 ## Links
 
-- Figma file: [Design Challenge](https://www.figma.com/design/VM1bse2WYuRKqF8Umvq02C/Design-Challenge). Page order: Screens `21:555`, Components `21:372`, Wireframes `12:2`, divider, Archive `48:1090`, Reference `4:2`.
+- Figma file: [Design Challenge](https://www.figma.com/design/VM1bse2WYuRKqF8Umvq02C/Design-Challenge). Page order: Cover `76:663`, Read me `83:215`, Screens `21:555`, Components `21:372`, divider, Wireframes `12:2`, Archive · directions explored `48:1090`, Reference `4:2`.
 - Prototype: https://design-challenge-ten.vercel.app/
 - Slides: —

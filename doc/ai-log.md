@@ -24,6 +24,13 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-16] Claude Code (Figma MCP) — Cover and Read me pages
+
+- **Generated:** A `Read me` page (one board, 8 sections, text from `06-presentation/figma-readme.md`) and a cover board on the user's existing `Cover` page (title, concept line, prototype link, a clone of `ab-03.plan` as hero), both cloned from the utility-board template. Pages reordered (Cover, Read me, Screens, Components, divider, Wireframes, Archive, Reference); Archive renamed `Archive · directions explored`.
+- **Changed:** `setFileThumbnailNodeAsync` isn't supported through the MCP, and the user had already made a `Cover` page with a `Thumbnail` frame, so the board went beside it and the thumbnail was left as the user set it. Header link width fixed after the screenshot.
+- **Judged:** One screenshot per board; text checked against the doc.
+- **Verdict:** ✏️
+
 ### [2026-10-16] Claude Code (Figma MCP) — Components page tidy
 
 - **Generated:** Archive sky frames flattened to PNG; Background set collapsed to `0011` plus a new `BackgroundVideo` component; source images moved to Archive; a variant label beside every component set (11 sets); Composer's two "Text" props renamed `Placeholder` / `Message`; 15 boards placed on a 6-column grid (Foundations first, then journey order).
