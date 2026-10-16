@@ -24,6 +24,13 @@ Fill this in at the end: counts by verdict, the 2–3 best examples, and one sen
 
 Newest first.
 
+### [2026-10-16] Claude Code (Figma MCP) — Components page tidy
+
+- **Generated:** Archive sky frames flattened to PNG; Background set collapsed to `0011` plus a new `BackgroundVideo` component; source images moved to Archive; a variant label beside every component set (11 sets); Composer's two "Text" props renamed `Placeholder` / `Message`; 15 boards placed on a 6-column grid (Foundations first, then journey order).
+- **Changed:** The first labels on horizontal sets (Chip, TabItem) overlapped; shortened to values only after the screenshot.
+- **Judged:** Screens still linked to the kept variant (same node ID); one screenshot of the page after the layout, one targeted fix. Not done: PlanCard `adjusting` and other missing states (the user didn't pick them); the video itself can't live in Figma, so the component shows its poster.
+- **Verdict:** ✏️
+
 ### [2026-10-16] Claude Code (Figma MCP) — Binding audit
 
 - **Generated:** Two read-only Plugin API scripts: every component's (and every loose Screens layer's) fills, strokes, effects, text styles, radius, gap and padding checked for a variable/style binding. Result in `04-system/binding-audit.md`: 2 unbound items, both deliberate (orb glow, home-indicator padding).

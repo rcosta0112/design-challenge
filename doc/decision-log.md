@@ -8,6 +8,14 @@ Newest first. To add an entry, insert it above the first one. Each entry: Contex
 
 ---
 
+## [2026-10-16] [System] — Background: video is final, one still as fallback
+
+**Context:** The `Background` set had 14 sky variants; the screens used only `0011`, and the prototype replaced the still with a looping video ("Prototype background: looping sky video").
+
+**Decision:** Keep both in the system. `BackgroundVideo` is the final background (Figma shows its poster; the description points to `Sky.svelte` and the mp4). `Background` collapses to one component, sky `0011`: the fallback under reduced motion or when autoplay is refused, and the still on the Figma screens. The other 13 variants, the 4 Archive sky-option frames (flattened to PNG first so nothing breaks) and the uploaded source images move to Archive.
+
+**Alternatives considered:** Keep the 14 variants (noise on the Components page; nothing uses them); delete without archiving (loses the exploration evidence).
+
 ## [2026-10-15] [System] — Type styles registered with tailwind-merge (Review plan contrast)
 
 **Context:** The user asked to check the Review plan button's contrast. It rendered near-white `#F2F5F3` on mint `#0FFFB3`: 1.20:1. Cause: tailwind-merge didn't know our type styles, read `text-body-md` as a text colour, and dropped `text-primary-foreground`. The same bug let the base `text-sm` win over the pill's size, so pill buttons were 14/20 instead of Figma's `label/md` 16/24.

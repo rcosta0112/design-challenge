@@ -45,7 +45,7 @@ The `Components` page (`21:372`) follows the utility board template above. **Dar
 | Foundations | `01.colour` (every colour variable × 3 modes, with hex) · `02.typography` (8 styles) · `03.spacing` (spacing, radius, effects) |
 | Actions & inputs | `04.icons` · `05.buttons` · `06.chips` (Chip, Badge, EstimateTag) · `07.composer` · `08.controls` (Slider, ToggleRow) |
 | Conversation & content | `09.conversation` (ChatBubble, StatusStep, AiOrb, Banner) · `10.cards` (BalanceCard, OptionCard, PlanCard) · `11.values` (AmountDisplay, SummaryRow, ProgressBar) · `12.data-viz` (CashflowBar, ProjectionChart) |
-| Navigation & surfaces | `13.navigation` (TopBar, TabBar, TabItem, iOS status bar and home indicator from the library) · `14.sheet` (SheetHeader + sheet pattern) · `15.backgrounds` (Background set + the uploaded source images) |
+| Navigation & surfaces | `13.navigation` (TopBar, TabBar, TabItem, iOS status bar and home indicator from the library) · `14.sheet` (SheetHeader + sheet pattern) · `15.background` (BackgroundVideo + Background fallback; the other skies and the source images are on Archive) |
 
 **Handoff readiness:** every component and set has a Dev Mode description (purpose, props, tokens, behaviour), all text is exposed as properties, colours are bound to variables, spacing and radius to variables where a token exists, and there are no detached instances. Loose text left on screens is typography only: the greeting, the "Based on" label and the review summary sentence.
 
@@ -56,7 +56,7 @@ The `Components` page (`21:372`) follows the utility board template above. **Dar
 | Button | variant: primary / secondary · state: default / disabled · Label · Icon (boolean, scan-face) | `ab-03`–`ab-06` | ✅ |
 | Chip | type: assumption (trailing pencil) / suggestion (leading sparkles) · Label | `ab-02`, `ab-04` | ✅ v1 |
 | ChatBubble | sender: user (bubble, max width 280) / ai ("Assistant" label + AiOrb, no bubble) · Message | `ab-02`, `ab-04` | ✅ v1 |
-| Composer | state: empty / filled (grows to several lines, controls bottom-aligned) · Text property | `ab-00`–`ab-04`, `ab-06` | ✅ v1 (no voice toggle yet) |
+| Composer | state: empty / filled (grows to several lines, controls bottom-aligned) · Placeholder, Message text properties | `ab-00`–`ab-04`, `ab-06` | ✅ v1 (no voice toggle yet) |
 | **PlanCard** | state: draft (EstimateTag, amount, 2 rows, Adjust + Review plan) / approved (Badge, ProgressBar, 2 rows, Undo + Change plan) | `ab-03`, `ab-06` | ✅ v1 (adjusting = the `ab-04` sheet) |
 | Slider | status: ok / tight · €300–€500, marker at ~€440 spare | `ab-04` | ✅ v1 |
 | ToggleRow | state: on / off · Label | `ab-04` | ✅ |
@@ -78,7 +78,8 @@ The `Components` page (`21:372`) follows the utility board template above. **Dar
 | StatusStep | Step | `ab-02` | ✅ |
 | Banner | kind: info / warning · Text | `ab-04` | ✅ v1 |
 | EstimateTag | — (sparkles + "Estimate") | inside CashflowBar, ProjectionChart | ✅ |
-| Background | sky: 14 variants from the user's sky sequence (default `0031`) | Mint Dark screens | ✅ |
+| Background | One component, sky `0011`: the static fallback for the video (reduced motion, autoplay refused) and the still on every Figma screen | Mint Dark screens | ✅ |
+| BackgroundVideo | Poster (a Background instance); the description points to `Sky.svelte` and `nishita-sky-dark.mp4` in the prototype | Prototype only | ✅ |
 | StatusBar, HomeIndicator | From the iOS 18 kit (iOS 26 refused import) | all | ✅ library |
 
 ## Naming
